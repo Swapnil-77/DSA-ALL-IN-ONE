@@ -3,8 +3,8 @@ package BinaryTrees;
 class Node{
     public boolean data;
     int val;
-    Nodes left;
-    Nodes right;
+    node left;
+    node right;
 
     Node(int val){
         this.val = val;
@@ -21,13 +21,13 @@ public class DFS_Levels {
         //   /   \ /   \
         // -1    1 6    9
 
-        Nodes a = new Nodes(3); // root
-        Nodes b = new Nodes(4);
-        Nodes c = new Nodes(2);
-        Nodes d = new Nodes(-1);
-        Nodes e = new Nodes(1);
-        Nodes f = new Nodes(6);
-        Nodes g = new Nodes(9);
+        node a = new node(3); // root
+        node b = new node(4);
+        node c = new node(2);
+        node d = new node(-1);
+        node e = new node(1);
+        node f = new node(6);
+        node g = new node(9);
 
         a.left = b;
         a.right = c;
@@ -47,41 +47,41 @@ public class DFS_Levels {
         postorder(a);
     }
 
-    private static int levels(Nodes root){
+    private static int levels(node root){
         if(root == null) return 0;
         return 1 + Math.max(levels(root.left), levels(root.right));
     }
 
-    private static int size(Nodes root){
+    private static int size(node root){
         if(root == null) return 0;
         return 1 + size(root.left) + size(root.right);
     }
 
-    private static int sum(Nodes root){
+    private static int sum(node root){
         if(root == null) return 0;
         return root.val + sum(root.left) + sum(root.right);
     }
 
-    private static int max(Nodes root){
+    private static int max(node root){
         if(root == null) return Integer.MIN_VALUE;
         return Math.max(root.val, Math.max(max(root.left), max(root.right)));
     }
 
-    private static void preorder(Nodes root){
+    private static void preorder(node root){
         if(root == null) return;
         System.out.print(root.val + " ");
         preorder(root.left);
         preorder(root.right);
     }
 
-    private static void inorder(Nodes root){
+    private static void inorder(node root){
         if(root == null) return;
         inorder(root.left);
         System.out.print(root.val + " ");
         inorder(root.right);
     }
 
-    private static void postorder(Nodes root){
+    private static void postorder(node root){
         if(root == null) return;
         postorder(root.left);
         postorder(root.right);
