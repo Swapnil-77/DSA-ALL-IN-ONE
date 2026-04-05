@@ -2,6 +2,7 @@ package LinkedList;
 
 public class MergeSortLL {
     static class Node {
+        public boolean val;
         int data;
         Node next;
 
@@ -73,10 +74,11 @@ public class MergeSortLL {
     }
 
     // 👇 MUST BE INSIDE Main class
-    static void printList(Node head) {
-        while (head != null) {
-            System.out.print(head.data + " ");
+    public static void printList(Node head){
+        while(head != null){
+            System.out.print(head.val + " -> ");
             head = head.next;
         }
+        System.out.println("null");
     }
 }
