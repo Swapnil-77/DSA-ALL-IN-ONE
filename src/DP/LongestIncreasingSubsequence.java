@@ -1,5 +1,6 @@
 package DP;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class LongestIncreasingSubsequence {
@@ -7,7 +8,31 @@ public class LongestIncreasingSubsequence {
         int[] arr = {10,9,2,5,3,7,101,18};
         System.out.println(lis(arr));
     }
-    // TABULATION (BOTTOM-UP DP)
+    // 🔹 Binary Search Optimization (O(n log n) time, O(n) space) 🔹
+    static int lis(int arr[]) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        for(int ele : arr){
+            if(ans.size()==0 || ele>ans.get(ans.size()-1)) ans.add(ele);
+            else replace(ele,ans);
+        }
+        return ans.size();
+    }
+
+    static void replace(int ele, ArrayList<Integer> ans) {
+        // find the lower bound
+        int lo = 0, hi = ans.size()-1, lb = -1;
+        while(lo<=hi){
+            int mid = lo + (hi-lo)/2;
+            if(ans.get(mid)>=ele){
+                lb = mid;
+                hi = mid - 1;
+            }
+            else lo = mid + 1;
+        }
+        ans.set(lb,ele);
+    }
+        // 🔹TABULATION (BOTTOM-UP DP)🔹
+        /*
         static int lis(int arr[]) {
         int n = arr.length;
         int[] dp = new int[n];
@@ -25,9 +50,9 @@ public class LongestIncreasingSubsequence {
         }
         // return dp[n-1]; // 2 3 4 5 6 1
         return maxLen;
-    }
+    }*/
 
-    // MEMOIZATION (TOP-DOWN DP WITH RECURSION)
+    // 🔹MEMOIZATION (TOP-DOWN DP WITH RECURSION)🔹
         /*
         static int lis(int arr[]) {
         int n = arr.length;
@@ -45,5 +70,23 @@ public class LongestIncreasingSubsequence {
         if(prev!=-1 && arr[idx]<=arr[prev]) return dp[idx][prev+1] = skip;
         int pick =  1 + helper(idx+1,idx,arr,dp);
         return dp[idx][prev+1] = Math.max(pick,skip);
+    }*/
+
+    // 🔹RECURSION (EXPONENTIAL TIME)🔹
+     /*
+   static int lis(int arr[]) {
+        return helper(0, -1, arr);
+    }
+
+    static int helper(int idx, int prev, int[] arr) {
+        if (idx == arr.length) return 0;
+
+        int skip = helper(idx + 1, prev, arr);
+
+        if (prev != -1 && arr[idx] <= arr[prev]) return skip;
+
+        int pick = 1 + helper(idx + 1, idx, arr);
+
+        return Math.max(pick, skip);
     }*/
 }
