@@ -2,7 +2,7 @@ package DP;
 
 public class PrintLongestCommonSubstring {
     public static void main(String[] args) {
-        String s = "abccbd";
+        String s = "bbabcbcab";
         PrintLongestCommonSubstring obj = new PrintLongestCommonSubstring();
         System.out.println(obj.getLongestPal(s));
     }

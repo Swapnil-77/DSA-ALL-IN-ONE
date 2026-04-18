@@ -1,10 +1,8 @@
 package DP;
 
-import java.util.Arrays;
-
-public class WaystoReachnthStair {
+public class WaystoReachNthStair {
     public static void main(String[] args) {
-        WaystoReachnthStair obj = new WaystoReachnthStair();
+        WaystoReachNthStair obj = new WaystoReachNthStair();
         int n = 5;
         System.out.println(obj.countWays(n));
     }

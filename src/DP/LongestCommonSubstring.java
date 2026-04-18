@@ -1,7 +1,35 @@
 package DP;
 
 public class LongestCommonSubstring {
+    public static void main(String[] args) {
+        String s1 = "abcde", s2 = "abfce";
+        LongestCommonSubstring obj = new LongestCommonSubstring();
+        System.out.println(obj.longCommSubstr(s1, s2));
+    }
+    // 🔹 Tabulation (Bottom-Up DP, O(n^2) space) 🔹
+    public int longCommSubstr(String a, String b) {
+        int m = a.length(), n = b.length();
+
+        int[][] dp = new int[m + 1][n + 1];
+        int maxLen = 0;
+
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+
+                if (a.charAt(i - 1) == b.charAt(j - 1)) {
+                    dp[i][j] = 1 + dp[i - 1][j - 1];
+                } else {
+                    dp[i][j] = 0;
+                }
+
+                maxLen = Math.max(maxLen, dp[i][j]);
+            }
+        }
+        return maxLen;
+    }
+
     // 🔹 Memoization (Top-Down DP) 🔹
+    /*
     static int maxLen;
     public int longCommSubstr(String s1, String s2) {
         int m = s1.length(), n = s2.length();
@@ -31,7 +59,7 @@ public class LongestCommonSubstring {
             return dp[i][j] = 0; // Reset suffix length to 0
         }
     }
-}
+}*/
     // 🔹 Recursive (Brute Force) 🔹
    /*
    static int maxLen;
@@ -55,8 +83,7 @@ public class LongestCommonSubstring {
             LCS(i - 1, j, a, b);
             LCS(i, j - 1, a, b);
             return 0;
-        }
-    }
-*/
+        }*/
+}
 
 
