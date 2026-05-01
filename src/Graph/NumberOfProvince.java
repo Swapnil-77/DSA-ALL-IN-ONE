@@ -3,10 +3,10 @@ package Graph;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class NumberOfProvinces {
+public class NumberOfProvince {
     public static void main(String[] args) {
         int[][] adj = {{1,1,0},{1,1,0},{0,0,1}};
-        NumberOfProvinces obj = new NumberOfProvinces();
+        NumberOfProvince obj = new NumberOfProvince();
         System.out.println(obj.findCircleNum(adj));
     }
 
