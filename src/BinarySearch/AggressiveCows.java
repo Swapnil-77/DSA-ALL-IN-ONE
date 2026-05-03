@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class AggressiveCows {
     public static void main(String[] args) {
-        int[] stalls = {1, 2, 4, 8, 9};
+        int[] stalls = {1, 2, 4, 8, 9, 10};
         int k = 3;
         AggressiveCows ac = new AggressiveCows();
         System.out.println(ac.aggressiveCows(stalls, k));
