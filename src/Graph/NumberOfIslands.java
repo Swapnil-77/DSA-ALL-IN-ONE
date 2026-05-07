@@ -37,7 +37,8 @@ public class NumberOfIslands {
             for (int j = 0; j < n; j++) {
                 // If we find unvisited land, it's a new island
                 if (grid[i][j] == '1' && vis[i][j] == false) {
-                    bfs(i, j, grid, vis);
+                    //bfs(i, j, grid, vis);
+                    dfs(i, j, grid, vis);
                     count++;
                 }
             }
@@ -45,7 +46,35 @@ public class NumberOfIslands {
         return count;
     }
 
-    private void bfs(int i, int j, char[][] grid, boolean[][] vis) {
+    //dfs approach
+    private void dfs(int i, int j, char[][] grid, boolean[][] vis) {
+        int m = grid.length, n = grid[0].length;
+
+        // Mark the current cell as visited
+        vis[i][j] = true;
+
+        // Check UP: i-1
+        if (i - 1 >= 0 && grid[i - 1][j] == '1' && vis[i - 1][j] == false) {
+            dfs(i - 1, j, grid, vis);
+        }
+
+        // Check DOWN: i+1
+        if (i + 1 <= m - 1 && grid[i + 1][j] == '1' && vis[i + 1][j] == false) {
+            dfs(i + 1, j, grid, vis);
+        }
+
+        // Check LEFT: j-1
+        if (j - 1 >= 0 && grid[i][j - 1] == '1' && vis[i][j - 1] == false) {
+            dfs(i, j - 1, grid, vis);
+        }
+
+        // Check RIGHT: j+1
+        if (j + 1 <= n - 1 && grid[i][j + 1] == '1' && vis[i][j + 1] == false) {
+            dfs(i, j + 1, grid, vis);
+        }
+    }
+
+    /*private void bfs(int i, int j, char[][] grid, boolean[][] vis) {
         int m = grid.length;
         int n = grid[0].length;
 
@@ -90,5 +119,5 @@ public class NumberOfIslands {
                 }
             }
         }
-    }
+    }*/
 }
