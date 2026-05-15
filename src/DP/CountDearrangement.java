@@ -4,7 +4,7 @@ public class CountDearrangement {
 
     public static void main(String[] args) {
         CountDearrangement obj = new CountDearrangement();
-        int n = 7;
+        int n = 5;
         System.out.println(obj.countDer(n));
     }
     // 🔹 Memoization (Top-Down DP, O(n) space) 🔹
