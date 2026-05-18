@@ -2,7 +2,7 @@ package BasicSorting;
 
 public class KthSmallest {
     public static void main(String[] args) {
-        int[] arr = {7, 10, 4, 3, 20, 15};
+        int[] arr = {7, 10, 4, 3, 20, 15, 6};
         int k = 3;
         int result = kthSmallest(arr, k);
         System.out.println(k + "th smallest element is " + result);
